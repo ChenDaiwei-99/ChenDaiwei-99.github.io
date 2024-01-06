@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Research Blogs on Daiwei Chen</title>
+    <link>http://ChenDaiwei-99.github.io/blogs/</link>
+    <description>Recent content in Research Blogs on Daiwei Chen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 Daiwei Chen :thinking_face:</copyright>
+    <lastBuildDate>Sat, 06 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://ChenDaiwei-99.github.io/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM &amp; RLHF - Paper Reading Notes</title>
+      <link>http://ChenDaiwei-99.github.io/blogs/blog1/</link>
+      <pubDate>Sat, 06 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://ChenDaiwei-99.github.io/blogs/blog1/</guid>
+      <description>Deep Reinforcement Learning from Human Preferences # Summary: Compared with the typical method of complex RL systems (which manually set complex goals), this paper explore another approach which define the goals just as human preferences between pairs of trajectory segments (learn a reward function from human feedback).</description>
+      
+    </item>
+    
+    <item>
+      <title>Coding Practice</title>
+      <link>http://ChenDaiwei-99.github.io/blogs/just-a-simple-test/</link>
+      <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://ChenDaiwei-99.github.io/blogs/just-a-simple-test/</guid>
+      <description>Some coding practice about multiple users metric learning and preference learning.
+ChenDaiwei-99/multiuser-metric-preference Paper code for &amp;ldquo;One for All: Simultaneous Metric and Preference Learning over Multiple Users&amp;rdquo; Jupyter Notebook 0 0 </description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://ChenDaiwei-99.github.io/blogs/just-a-simple-test/featured.jpg" />
+    </item>
+    
+  </channel>
+</rss>

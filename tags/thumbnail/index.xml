@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>thumbnail on Daiwei Chen</title>
+    <link>http://localhost:1313/blowfish/tags/thumbnail/</link>
+    <description>Recent content in thumbnail on Daiwei Chen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 Daiwei Chen :thinking_face:</copyright>
+    <lastBuildDate>Wed, 12 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/blowfish/tags/thumbnail/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thumbnails</title>
+      <link>http://localhost:1313/blowfish/docs/thumbnails/</link>
+      <pubDate>Wed, 12 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blowfish/docs/thumbnails/</guid>
+      <description>Thumbnails # Blowfish was enhanced in order to make it easy to add visual support to your posts. To do so, you just need to place an image file (almost all formats are supported but we recommend .</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blowfish/docs/thumbnails/featured.png" />
+    </item>
+    
+  </channel>
+</rss>
