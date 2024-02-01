@@ -15,7 +15,11 @@
       
       <guid>http://ChenDaiwei-99.github.io/blogs/pytorch-tricks/</guid>
       <description>1. Categorical Reparameterization with Gumbel-Softmax (create categorical variables in neural networks) # Background: Discrete variables are important in neural networks. E.g. discrete variables have been used to learn probabilistic latent representations that correspond to distinct semantic classes.</description>
+<<<<<<< HEAD
       
+=======
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://ChenDaiwei-99.github.io/blogs/pytorch-tricks/featured.png" />
+>>>>>>> d7eae72 (update blogs and publications)
     </item>
     
     <item>

@@ -8,6 +8,7 @@
     <language>en</language>
     <copyright>© 2024 Daiwei Chen :thinking_face:</copyright>
     <atom:link href="http://ChenDaiwei-99.github.io/life/index.xml" rel="self" type="application/rss+xml" />
+<<<<<<< HEAD
     <item>
       <title></title>
       <link>http://ChenDaiwei-99.github.io/life/photos/</link>
@@ -18,5 +19,7 @@
       
     </item>
     
+=======
+>>>>>>> d7eae72 (update blogs and publications)
   </channel>
 </rss>
