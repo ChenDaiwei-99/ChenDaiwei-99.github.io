@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper <a href="https://pal-alignment.github.io/" > Pluralistic ALignment Framework for Learning from Heterogeneous Preferences</a> has been accepted by 2O24 <b>ICML</b> TF2M Workshop and MHFAIA Workshop!
+Our paper <a href="https://pal-alignment.github.io/" > Pluralistic Alignment Framework for Learning from Heterogeneous Preferences</a> has been accepted by 2O24 <b>ICML</b> TF2M Workshop and MHFAIA Workshop!
