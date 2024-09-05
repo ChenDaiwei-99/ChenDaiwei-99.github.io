@@ -20,7 +20,7 @@ news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
-<p style="font-size: 18px;">I'm a first year Electrical and Computer Engineering (ECE) PhD in Machine Learning and Optimization Theory (<a href="https://mlopt.ece.wisc.edu" target="_blank">MLOPT</a>) Research Group at the <a href="https://www.wisc.edu" target="_blank">University of Wisconsin-Madison</a>. 
+<p style="font-size: 18px;">I'm a second year Electrical and Computer Engineering (ECE) PhD in Machine Learning and Optimization Theory (<a href="https://mlopt.ece.wisc.edu" target="_blank">MLOPT</a>) Research Group at the <a href="https://www.wisc.edu" target="_blank">University of Wisconsin-Madison</a>. 
 <br> <br>
 Under the guidance of my advisor, Prof. <a href="https://ramyakv.github.io/index.html" target="_blank">Ramya Korlakai Vinayak</a>, my research focuses on AI alignment, Foundation Models, Representation Learning, and Preference Learning. 
 <br> <br>
