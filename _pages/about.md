@@ -14,6 +14,7 @@ profile:
       <a href="mailto:daiwei.chen@wisc.edu"><i class="fa fa-at fa-2x"></i></a>&nbsp;
       <a href="https://www.linkedin.com/in/daiwei-chen-89969a230/"><i class="fa-brands fa-linkedin fa-2x"></i></a>&nbsp;
       <a href="https://x.com/davy62486780"><i class="fa-brands fa-x-twitter fa-2x"></i></a>
+      <a href="https://scholar.google.com/citations?user=x7b5TJMAAAAJ&hl=en"><i class="fa-brands fa-google-scholar fa-2x"></i></a>
     </p>
 
 news: true # includes a list of news items
