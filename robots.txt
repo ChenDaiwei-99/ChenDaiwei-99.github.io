@@ -1,3 +1,4 @@
 User-agent: *
-Allow: /
-Sitemap: http://ChenDaiwei-99.github.io/sitemap.xml
+Disallow:
+
+Sitemap: https://chendaiwei-99.github.io//sitemap.xml
