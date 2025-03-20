@@ -29,12 +29,10 @@ I'm a second year Electrical and Computer Engineering (ECE) PhD in Machine Learn
 <br> <hr style="border: none; height: 1px; background-color: transparent; margin: 0.5em;">
 Under the guidance of my advisor, Prof. <a href="https://ramyakv.github.io/index.html" target="_blank">Ramya Korlakai Vinayak</a>, my research focuses on
 <ul>
-    <li><strong>AI Alignment</strong></li>
-    <li><strong>LLM Finetuning</strong></li>
-    <li><strong>Reinforcement Learning with Human Feedback (RLHF)</strong></li>
+    <li><strong>🛠️ LLM Post-Training ( AI Alignment and RLHF )</strong></li>
+    <li><strong>🕵🏻‍♂️ Mechanistic Interpretability of LLM</strong></li>
 </ul>
-I am also deeply interested in <strong>Foundation Models</strong> and <strong>Representation Learning</strong>.
-<br> <hr style="border: none; height: 1px; background-color: transparent; margin: 0.5em;">
+<hr style="border: none; height: 1px; background-color: transparent; margin: 0.5em;">
 Before starting my PhD journey, I obtained my Master's degree in Systems Engineering from the <a href="https://www.upenn.edu" target="_blank">University of Pennsylvania</a> under the guidance of Prof. <a href="https://pratikac.github.io" target="_blank">Pratik Chaudhari</a>, and received my Bachelor of Science in Psychology from <a href="https://www.zju.edu.cn/english/" target="_blank">Zhejiang University</a>.
 <br> <hr style="border: none; height: 1px; background-color: transparent; margin: 0.5em;">
 </p>
