@@ -25,7 +25,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 <p style="font-size: 17px;">
-I'm a second year Electrical and Computer Engineering (ECE) PhD in Machine Learning and Optimization Theory (<a href="https://mlopt.ece.wisc.edu" target="_blank">MLOPT</a>) Research Group at the <a href="https://www.wisc.edu" target="_blank">University of Wisconsin-Madison</a>. 
+I'm a third-year Electrical and Computer Engineering (ECE) PhD in Machine Learning and Optimization Theory (<a href="https://mlopt.ece.wisc.edu" target="_blank">MLOPT</a>) Research Group at the <a href="https://www.wisc.edu" target="_blank">University of Wisconsin-Madison</a>. 
 <br> <hr style="border: none; height: 1px; background-color: transparent; margin: 0.5em;">
 Under the guidance of my advisor, Prof. <a href="https://ramyakv.github.io/index.html" target="_blank">Ramya Korlakai Vinayak</a>, my research focuses on
 <ul>
