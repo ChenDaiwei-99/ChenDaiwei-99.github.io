@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daiwei Chen | ML & AI Alignment Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #faf9f7;
+            --accent: #8b4513;
+            --muted: #6b6b6b;
+            --border: #e8e6e3;
+            --highlight: #f5f3f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+            font-weight: 300;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Side Navigation */
+        .side-nav {
+            position: fixed;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .side-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .side-nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 400;
+            transition: color 0.2s;
+            letter-spacing: 0.02em;
+        }
+
+        .side-nav a:hover {
+            color: var(--ink);
+        }
+
+        /* 主内容区 */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* Hero 区域 */
+        #hero {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 240px;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .hero-text h1 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+            max-width: 500px;
+        }
+
+        .hero-text .tagline a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .hero-text .tagline a:hover {
+            text-decoration: underline;
+        }
+
+        .hero-text .affiliation {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .hero-text .affiliation strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .hero-photo {
+            width: 240px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.25rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--ink);
+            border-bottom-color: var(--ink);
+        }
+
+        /* CV 下载按钮 */
+        .cv-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--ink);
+            color: var(--paper);
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: all 0.2s;
+            border: 1px solid var(--ink);
+        }
+
+        .cv-button:hover {
+            background: transparent;
+            color: var(--ink);
+        }
+
+        .cv-button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* 章节标题 */
+        h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.01em;
+        }
+
+        h3.subsection {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        h3.subsection:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Research Interests - 段落形式 */
+        .research-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--ink);
+            max-width: 750px;
+        }
+
+        .research-text p {
+            margin-bottom: 1.2rem;
+        }
+
+        .research-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .research-keyword {
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        /* Publications */
+        .publication {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1.25rem;
+            align-items: start;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .publication-image {
+            width: 120px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--highlight) 0%, var(--border) 100%);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 0.75rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .publication-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .publication-content {
+            min-width: 0;
+        }
+
+        .publication .venue {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .publication h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .publication .authors {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .publication .authors .me {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .publication .links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .publication .links a {
+            font-size: 0.82rem;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 0.25rem 0.6rem;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .publication .links a:hover {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+
+        .publication.highlight {
+            background: rgba(255, 236, 179, 0.4);
+            margin: 0 -1rem;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        /* News */
+        .news-list {
+            list-style: none;
+        }
+
+        .news-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .news-list li:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* CV Section */
+        #cv {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        #cv p {
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        /* Contact */
+        #contact p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 550px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            font-size: 0.95rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.2s;
+        }
+
+        .contact-info a:hover {
+            border-color: var(--ink);
+        }
+
+        /* Service */
+        .service-list {
+            font-size: 0.95rem;
+            color: var(--ink);
+        }
+
+        .ta-list {
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .ta-list li {
+            padding: 0.4rem 0;
+            color: var(--ink);
+        }
+
+        .ta-list li strong {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Awards */
+        .awards-list {
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .awards-list li {
+            padding: 0.4rem 0;
+            color: var(--ink);
+        }
+
+        .award-year {
+            display: inline-block;
+            width: 50px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            #hero {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding-top: 2rem;
+            }
+
+            .hero-photo {
+                width: 180px;
+                height: 225px;
+                order: -1;
+            }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .side-nav {
+                display: none;
+            }
+
+            .news-list li {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .publication {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .publication-image {
+                width: 100%;
+                height: 120px;
+            }
+        }
+
+        /* 滚动淡入动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <nav class="side-nav">
+        <ul>
+            <li><a href="#hero">About</a></li>
+            <li><a href="#research">Research Interests</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#service">Academic Service</a></li>
+            <li><a href="#teaching">Teaching</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="hero">
+            <div class="hero-text">
+                <h1 class="fade-in">Daiwei Chen</h1>
+                <p class="affiliation fade-in delay-2">
+                    <strong>University of Wisconsin-Madison</strong><br>
+                    Department of Electrical and Computer Engineering
+                </p>
+                <p class="tagline fade-in delay-1">
+                    I am a third-year PhD student in Electrical and Computer Engineering at the University of Wisconsin-Madison, working on Reliability of Large Language Models under the supervision of Prof. <a href="https://ramyakv.github.io/index.html" target="_blank" rel="external nofollow noopener">Ramya Korlakai Vinayak</a>.
+                </p>
+                <p class="tagline fade-in delay-1">
+                    I received my M.S. in Systems Engineering from the University of Pennsylvania (advised by Prof. <a href="https://pratikac.github.io" target="_blank" rel="external nofollow noopener">Pratik Chaudhari</a>, working on Machine Learning Theory) and my B.S. in Psychology from Zhejiang University.
+                </p>
+                <hr style="border: none; height: 1px; background-color: transparent; margin: 0.5em;">
+                <div class="social-links fade-in delay-3">
+                    <a href="./assets/DaiweiChen_CV.pdf" target="_blank" rel="external nofollow noopener">CV</a>
+                    <a href="https://scholar.google.com/citations?user=x7b5TJMAAAAJ&hl=en" target="_blank" rel="external nofollow noopener">Google Scholar</a>
+                    <a href="https://github.com/ChenDaiwei-99" target="_blank" rel="external nofollow noopener">GitHub</a>
+                    <a href="https://www.linkedin.com/in/daiwei-chen-89969a230/" target="_blank" rel="external nofollow noopener">LinkedIn</a>
+                    <a href="https://x.com/daiweichen99" target="_blank" rel="external nofollow noopener">Twitter / X</a>
+                </div>
+            </div>
+            <div class="hero-photo fade-in delay-2">
+                <img src="./assets/Daiwei_Chen.jpg" alt="Daiwei Chen">
+            </div>
+        </section>
+
+        <section id="research">
+            <h2>Research Interests</h2>
+            <div class="research-text">
+                <p>
+                    My research mainly focuses on <span class="research-keyword"><strong><u>Improving the Reliability of Large Language Models</u></strong></span>, with particular emphasis on three core directions:
+                    <span class="research-keyword">Pluralism</span>: Addressing the lack of output diversity (e.g., mode collapsing) in aligned models. 
+                    <span class="research-keyword">Factuality</span>: Researching methods to bridge the gap between generated overconfidence and actual correctness. 
+                    <span class="research-keyword">Generalization</span>: Investigating how foundational models can maintain performance and adaptability across novel tasks.
+                </p>
+                <!-- <p>
+                    My research focuses on <span class="research-keyword">AI alignment</span> and 
+                    <span class="research-keyword">pluralistic moral reasoning</span> in large language models. 
+                    I am particularly interested in developing methods that enable AI systems to represent 
+                    the full distribution of human values rather than collapsing to single viewpoints—an 
+                    approach I call <span class="research-keyword">distributional alignment</span>.
+                </p>
+                <p>
+                    Central to my work is <span class="research-keyword">Group Relative Policy Optimization (GRPO)</span>, 
+                    a training methodology that improves alignment properties while preserving diverse perspectives. 
+                    I also investigate how demographic groups respond differently to moral and social value questions, 
+                    drawing on <span class="research-keyword">moral foundations theory</span> to build more nuanced AI systems.
+                </p>
+                <p>
+                    Beyond alignment, I work on <span class="research-keyword">recommendation systems</span>, 
+                    developing semantic token embedding techniques (STAR) and language model-based generative recommenders 
+                    that better capture user preferences and content semantics.
+                </p> -->
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            
+            <h3 class="subsection">Preprints</h3>
+            
+            <div class="publication">
+                <div class="publication-image">
+                    <img src="./assets/papers/linkedout.png" alt="LinkedOut">
+                </div>
+                <div class="publication-content">
+                    <div class="venue">arXiv 2025</div>
+                    <h4>LinkedOut: Linking World Knowledge Representation Out of Video LLM for Next-Generation Video Recommendation</h4>
+                    <p class="authors">H Zhang, Y Lu, L Wang, Y Li, <span class="me">D Chen</span>, Y Xu, Y Fu</p>
+                    <div class="links">
+                        <a href="https://arxiv.org/abs/2512.16891" target="_blank" rel="external nofollow noopener">arXiv</a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="subsection">Selected Publications</h3>
+
+            <div class="publication highlight">
+                <div class="publication-image">
+                    <img src="./assets/papers/pal.png" alt="PAL">
+                </div>
+                <div class="publication-content">
+                    <div class="venue">ICLR 2025</div>
+                    <h4>PAL: Sample-Efficient Personalized Reward Modeling for Pluralistic Alignment</h4>
+                    <p class="authors"><span class="me">D Chen</span>, Y Chen, A Rege, Z Wang, RK Vinayak</p>
+                    <div class="links">
+                        <a href="https://openreview.net/pdf?id=1kFDrYCuSu" target="_blank" rel="external nofollow noopener">Paper</a>
+                        <a href="https://arxiv.org/abs/2406.08469" target="_blank" rel="external nofollow noopener">arXiv</a>
+                        <a href="https://pal-alignment.github.io/" target="_blank" rel="external nofollow noopener">Project Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-image">
+                    <img src="./assets/papers/unraveling.png" alt="Unraveling the Impact of Training Samples">
+                </div>
+                <div class="publication-content">
+                    <div class="venue">ICLR 2024 Blogpost Track</div>
+                    <h4>Unraveling the Impact of Training Samples</h4>
+                    <p class="authors"><span class="me">D Chen</span>, J Zhang, RK Vinayak</p>
+                    <div class="links">
+                        <a href="https://iclr-blogposts.github.io/2024/blog/unraveling-the-impact-of-training-samples/" target="_blank" rel="external nofollow noopener">Blogpost</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="publication highlight">
+                <div class="publication-image">
+                    <img src="./assets/papers/lc.png" alt="Learning Capacity">
+                </div>
+                <div class="publication-content">
+                    <div class="venue">arXiv 2023</div>
+                    <h4>Learning Capacity: A Measure of the Effective Dimensionality of a Model</h4>
+                    <p class="authors"><span class="me">D Chen</span>, WK Chang, P Chaudhari</p>
+                    <div class="links">
+                        <a href="https://arxiv.org/abs/2305.17332" target="_blank" rel="external nofollow noopener">arXiv</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news">
+            <h2>Recent Updates</h2>
+            <ul class="news-list">
+                <li>
+                    <span class="news-date">Nov 2025</span>
+                    <span>Received Research Grant Sponsorship from <a href="https://lambdalabs.com/" target="_blank" rel="external nofollow noopener">Lambda.AI</a> 🎉.</span>
+                </li>
+                <li>
+                    <span class="news-date">Aug 2025</span>
+                    <span>Completed GenAI Research Internship at <a href="https://www.linkedin.com/" target="_blank" rel="external nofollow noopener">Microsoft LinkedIn</a>, working on LLM Recommendation System.</span>
+                </li>
+                <li>
+                    <span class="news-date">Apr 2025</span>
+                    <span>Attending <a href="https://iclr.cc/Conferences/2025" target="_blank" rel="external nofollow noopener">ICLR 2025</a> at Singapore EXPO, Apr 24-28. Wish to see you there! 🤗</span>
+                </li>
+                <li>
+                    <span class="news-date">Jan 2025</span>
+                    <span>Our paper <a href="https://openreview.net/pdf?id=1kFDrYCuSu" target="_blank" rel="external nofollow noopener">PAL</a> accepted to <a href="https://iclr.cc/Conferences/2025" target="_blank" rel="external nofollow noopener">ICLR 2025</a>!</span>
+                </li>
+                <li>
+                    <span class="news-date">Dec 2024</span>
+                    <span>Attended <a href="https://nips.cc/Conferences/2024" target="_blank" rel="external nofollow noopener">NeurIPS 2024</a> in Vancouver. PAL received a 🔥 Spotlight Talk at the <a href="https://sites.google.com/view/behavioralml/" target="_blank" rel="external nofollow noopener">Behavioral ML</a> workshop.</span>
+                </li>
+                <li>
+                    <span class="news-date">Feb 2024</span>
+                    <span>Our blogpost <a href="https://iclr-blogposts.github.io/2024/blog/unraveling-the-impact-of-training-samples/" target="_blank" rel="external nofollow noopener">Unraveling The Impact of Training Samples</a> accepted by ICLR 2024.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="service">
+            <h2>Academic Service</h2>
+            <h3 class="subsection">Reviewer</h3>
+            <p class="service-list">NeurIPS 2026 · ICLR 2026 · CVPR 2026 · EACL 2026</p>
+        </section>
+
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <ul class="ta-list">
+                <li><strong>ECE 204</strong> Data Science & Engineering — UW-Madison</li>
+                <li><strong>ECE 532</strong> Matrix Methods in Machine Learning — UW-Madison</li>
+                <li><strong>CIS 350</strong> Software Design & Engineering — UPenn</li>
+                <li><strong>ESE 542</strong> Statistics for Data Science — UPenn</li>
+            </ul>
+        </section>
+
+        <section id="awards">
+            <h2>Awards & Achievements</h2>
+            <ul class="awards-list">
+                <li><span class="award-year">2025</span> Research Grant Sponsorship — Lambda.AI</li>
+                <li><span class="award-year">2023</span> Outstanding Research Award — University of Pennsylvania</li>
+                <li><span class="award-year">2021</span> Zhejiang University Scholarship — Zhejiang University</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>
+                I'm always open to discussing research collaborations.
+                Feel free to reach out!
+            </p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:daiwei.chen@wisc.edu">daiwei.chen@wisc.edu</a></p>
+                <p>Office: Wisconsin Institute for Discovery, Room 2115G-2, UW-Madison</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Daiwei Chen</p>
+    </footer>
+
+    <script>
+        // 简单的滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section:not(#hero)').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
