@@ -1,1 +1,2 @@
 - [how to be good at research (by @itsreallyvivek)](https://x.com/itsreallyvivek/status/2064686372737454155)
+- [Claude Shannon's 1952 Lecture on Creative Thinking](https://spinlab.me/2017/07/30/claude-shannons-1952-lecture-on-creative-thinking/)
