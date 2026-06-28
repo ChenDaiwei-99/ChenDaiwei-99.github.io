@@ -461,6 +461,18 @@
             border-top: 1px solid var(--border);
         }
 
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
         /* 响应式 */
         @media (max-width: 768px) {
             #hero {
@@ -772,7 +784,7 @@
     </main>
 
     <footer>
-        <p>© 2026 Daiwei Chen - 独立自主 心怀热爱</p>
+        <p>© 2026 Daiwei Chen - 独立自主 心怀热爱 - <a href="./Good_Notes/index.html">Useful Notes</a></p>
     </footer>
 
     <script>

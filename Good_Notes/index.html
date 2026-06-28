@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useful Notes | Daiwei Chen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #faf9f7;
+            --accent: #8b4513;
+            --muted: #6b6b6b;
+            --border: #e8e6e3;
+            --highlight: #f5f3f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+            font-weight: 300;
+            line-height: 1.55;
+            font-size: 15px;
+        }
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        h1 {
+            margin-bottom: 0.7rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .intro {
+            padding: 2.5rem 0 2rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 0;
+        }
+
+        .intro p {
+            max-width: 520px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .post-list {
+            display: grid;
+            gap: 0;
+        }
+
+        article {
+            padding: 1.15rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        article:last-child {
+            border-bottom: none;
+        }
+
+        .post-meta {
+            margin-bottom: 0.35rem;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin-bottom: 0.45rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+
+        .post-summary {
+            max-width: 620px;
+            margin-bottom: 0.7rem;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .read-link,
+        .back-link {
+            margin-bottom: 0;
+            font-size: 0.78rem;
+        }
+
+        .read-link a {
+            display: inline-block;
+            color: var(--muted);
+            padding: 0.2rem 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .read-link a:hover {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 0 1.25rem 3rem;
+            }
+
+            .intro {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            article {
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header class="intro">
+            <h1>Useful Notes</h1>
+            <p>
+                Short notes on research, engineering, reading, and anything
+                useful enough to keep around.
+            </p>
+        </header>
+
+        <section class="post-list" id="notes" aria-label="Notes"></section>
+
+    </main>
+
+    <script src="../assets/md_src/notes.js"></script>
+    <script>
+        const notes = window.USEFUL_NOTES || [];
+        const notesContainer = document.getElementById('notes');
+
+        function getNoteHref(slug) {
+            const encodedSlug = encodeURIComponent(slug);
+            return `note.html#${encodedSlug}`;
+        }
+
+        if (notes.length === 0) {
+            notesContainer.innerHTML = '<p>No notes yet.</p>';
+        }
+
+        notes.forEach(note => {
+            const article = document.createElement('article');
+            const meta = document.createElement('p');
+            const heading = document.createElement('h2');
+            const summary = document.createElement('p');
+            const readMore = document.createElement('p');
+            const readLink = document.createElement('a');
+
+            meta.className = 'post-meta';
+            meta.textContent = `${note.date} \u00b7 ${note.tag}`;
+            heading.textContent = note.title;
+            summary.className = 'post-summary';
+            summary.textContent = note.summary;
+            readMore.className = 'read-link';
+            readLink.href = getNoteHref(note.slug);
+            readLink.textContent = 'Read note';
+
+            readMore.appendChild(readLink);
+            article.append(meta, heading, summary, readMore);
+            notesContainer.appendChild(article);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useful Notes | Daiwei Chen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #faf9f7;
+            --accent: #8b4513;
+            --muted: #6b6b6b;
+            --border: #e8e6e3;
+            --highlight: #f5f3f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 2rem;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        main {
+            width: min(680px, 100%);
+            margin: 4rem auto 0;
+            padding-bottom: 4rem;
+        }
+
+        header {
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(2.5rem, 9vw, 4.75rem);
+            font-weight: 500;
+            line-height: 0.98;
+        }
+
+        .post-meta {
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .summary,
+        p {
+            max-width: 42rem;
+            margin-bottom: 1rem;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .content h2,
+        .content h3 {
+            margin: 2rem 0 0.75rem;
+            color: var(--ink);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .content h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 2rem;
+        }
+
+        .content h3 {
+            font-size: 1.05rem;
+        }
+
+        .content ul,
+        .content ol {
+            margin: 0 0 1rem 1.25rem;
+            color: var(--muted);
+        }
+
+        .content li {
+            margin-bottom: 0.4rem;
+        }
+
+        .content blockquote {
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+            color: var(--muted);
+        }
+
+        .content blockquote p:last-child,
+        .content blockquote ul:last-child,
+        .content blockquote ol:last-child {
+            margin-bottom: 0;
+        }
+
+        .content .callout-title {
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .content code {
+            padding: 0.08rem 0.28rem;
+            background: var(--highlight);
+            border: 1px solid var(--border);
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 0.9em;
+        }
+
+        .content pre {
+            margin: 1.25rem 0;
+            padding: 1rem;
+            overflow-x: auto;
+            background: var(--highlight);
+            border: 1px solid var(--border);
+        }
+
+        .content pre code {
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+
+        .content table {
+            width: 100%;
+            margin: 1.25rem 0;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .content th,
+        .content td {
+            padding: 0.45rem 0.55rem;
+            border: 1px solid var(--border);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .content th {
+            color: var(--ink);
+            font-weight: 500;
+            background: var(--highlight);
+        }
+
+        .content .math-block {
+            margin: 1.25rem 0;
+            padding: 0.9rem 1rem;
+            overflow-x: auto;
+            background: var(--highlight);
+            border: 1px solid var(--border);
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+
+        .content hr {
+            margin: 2rem 0;
+            border: 0;
+            border-top: 1px solid var(--border);
+        }
+
+        a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .back-link {
+            margin-top: 2.5rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <p class="post-meta" id="note-meta"></p>
+            <h1 id="note-title">Useful Notes</h1>
+            <p class="summary" id="note-summary"></p>
+        </header>
+
+        <article class="content" id="note-content">
+            <p>Loading note...</p>
+        </article>
+
+    </main>
+
+    <script src="../assets/md_src/notes.js"></script>
+    <script>
+        const notes = window.USEFUL_NOTES || [];
+        const params = new URLSearchParams(window.location.search);
+        const hashSlug = decodeURIComponent(window.location.hash.replace(/^#/, '')).trim();
+        const querySlug = (params.get('note') || '').trim();
+        const slug = hashSlug || querySlug;
+        const registeredNote = notes.find(item => item.slug === slug);
+        const note = registeredNote || (slug ? {
+            slug,
+            title: slug.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' '),
+            summary: '',
+            date: '',
+            tag: '',
+            src: `assets/md_src/${slug}.md`
+        } : (notes.length === 1 ? notes[0] : null));
+        const meta = document.getElementById('note-meta');
+        const title = document.getElementById('note-title');
+        const summary = document.getElementById('note-summary');
+        const content = document.getElementById('note-content');
+
+        function escapeHtml(value) {
+            return value
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function renderInline(value) {
+            return escapeHtml(value)
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="external nofollow noopener">$1</a>');
+        }
+
+        function stripFrontmatter(markdown) {
+            return markdown.replace(/^---\n[\s\S]*?\n---\n*/, '');
+        }
+
+        function stripDuplicateTitle(markdown, noteTitle) {
+            const escapedTitle = noteTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            return markdown.replace(new RegExp(`^#\\s+${escapedTitle}\\s*\\n+`, 'i'), '');
+        }
+
+        function renderTable(lines) {
+            const rows = lines.map(line => line.trim().replace(/^\||\|$/g, '').split('|').map(cell => cell.trim()));
+            const header = rows[0] || [];
+            const body = rows.slice(2);
+
+            return `
+                <table>
+                    <thead><tr>${header.map(cell => `<th>${renderInline(cell)}</th>`).join('')}</tr></thead>
+                    <tbody>${body.map(row => `<tr>${row.map(cell => `<td>${renderInline(cell)}</td>`).join('')}</tr>`).join('')}</tbody>
+                </table>
+            `;
+        }
+
+        function markdownToHtml(markdown, noteTitle = '', options = {}) {
+            const shouldPrepareDocument = options.prepareDocument !== false;
+            const normalizedMarkdown = markdown.replace(/\r\n/g, '\n');
+            const cleanMarkdown = shouldPrepareDocument
+                ? stripDuplicateTitle(stripFrontmatter(normalizedMarkdown), noteTitle)
+                : normalizedMarkdown;
+            const lines = cleanMarkdown.split('\n');
+            const html = [];
+            let inList = false;
+            let listType = '';
+            let inCode = false;
+            let inMath = false;
+            let paragraph = [];
+            let code = [];
+            let math = [];
+            let table = [];
+            let quote = [];
+
+            function flushParagraph() {
+                if (paragraph.length > 0) {
+                    html.push(`<p>${renderInline(paragraph.join(' '))}</p>`);
+                    paragraph = [];
+                }
+            }
+
+            function closeList() {
+                if (inList) {
+                    html.push(`</${listType}>`);
+                    inList = false;
+                    listType = '';
+                }
+            }
+
+            function flushTable() {
+                if (table.length > 0) {
+                    html.push(renderTable(table));
+                    table = [];
+                }
+            }
+
+            function flushQuote() {
+                if (quote.length === 0) {
+                    return;
+                }
+
+                const firstLine = quote[0].trim();
+                const callout = firstLine.match(/^\[!([A-Z]+)\]\s*(.*)$/i);
+
+                if (callout) {
+                    const body = quote.slice(1).join('\n').trim();
+                    const label = callout[2] ? `${callout[1]}: ${callout[2]}` : callout[1];
+                    html.push(`
+                        <blockquote class="callout">
+                            <p class="callout-title">${escapeHtml(label)}</p>
+                            ${body ? markdownToHtml(body, '', { prepareDocument: false }) : ''}
+                        </blockquote>
+                    `);
+                } else {
+                    html.push(`<blockquote>${markdownToHtml(quote.join('\n'), '', { prepareDocument: false })}</blockquote>`);
+                }
+
+                quote = [];
+            }
+
+            lines.forEach(line => {
+                const quoteLine = line.match(/^>\s*(.*)$/);
+
+                if (quoteLine && !inCode && !inMath) {
+                    flushParagraph();
+                    closeList();
+                    flushTable();
+                    quote.push(quoteLine[1]);
+                    return;
+                }
+
+                flushQuote();
+
+                if (line.trim() === '$$') {
+                    flushParagraph();
+                    closeList();
+                    flushTable();
+                    if (inMath) {
+                        html.push(`<div class="math-block">\\[${escapeHtml(math.join('\n'))}\\]</div>`);
+                        math = [];
+                        inMath = false;
+                    } else {
+                        inMath = true;
+                    }
+                    return;
+                }
+
+                if (inMath) {
+                    math.push(line);
+                    return;
+                }
+
+                if (line.startsWith('```')) {
+                    flushParagraph();
+                    closeList();
+                    flushTable();
+                    if (inCode) {
+                        html.push(`<pre><code>${escapeHtml(code.join('\n'))}</code></pre>`);
+                        code = [];
+                        inCode = false;
+                    } else {
+                        inCode = true;
+                    }
+                    return;
+                }
+
+                if (inCode) {
+                    code.push(line);
+                    return;
+                }
+
+                if (line.trim() === '') {
+                    flushParagraph();
+                    closeList();
+                    flushTable();
+                    return;
+                }
+
+                if (line.trim().startsWith('|') && line.trim().endsWith('|')) {
+                    flushParagraph();
+                    closeList();
+                    table.push(line);
+                    return;
+                }
+
+                flushTable();
+
+                if (/^---+$/.test(line.trim())) {
+                    flushParagraph();
+                    closeList();
+                    html.push('<hr>');
+                    return;
+                }
+
+                const heading = line.match(/^(#{1,3})\s+(.+)$/);
+                if (heading) {
+                    flushParagraph();
+                    closeList();
+                    html.push(`<h${heading[1].length}>${renderInline(heading[2])}</h${heading[1].length}>`);
+                    return;
+                }
+
+                const listItem = line.match(/^[-*]\s+(.+)$/);
+                if (listItem) {
+                    flushParagraph();
+                    if (!inList || listType !== 'ul') {
+                        closeList();
+                        html.push('<ul>');
+                        inList = true;
+                        listType = 'ul';
+                    }
+                    html.push(`<li>${renderInline(listItem[1])}</li>`);
+                    return;
+                }
+
+                const orderedItem = line.match(/^\d+\.\s+(.+)$/);
+                if (orderedItem) {
+                    flushParagraph();
+                    if (!inList || listType !== 'ol') {
+                        closeList();
+                        html.push('<ol>');
+                        inList = true;
+                        listType = 'ol';
+                    }
+                    html.push(`<li>${renderInline(orderedItem[1])}</li>`);
+                    return;
+                }
+
+                paragraph.push(line.trim());
+            });
+
+            flushQuote();
+            flushParagraph();
+            closeList();
+            flushTable();
+
+            if (inCode) {
+                html.push(`<pre><code>${escapeHtml(code.join('\n'))}</code></pre>`);
+            }
+
+            if (inMath) {
+                html.push(`<div class="math-block">\\[${escapeHtml(math.join('\n'))}\\]</div>`);
+            }
+
+            return html.join('\n');
+        }
+
+        function typesetMath(attempts = 0) {
+            if (window.MathJax && MathJax.typesetPromise) {
+                MathJax.typesetPromise([content]).catch(() => {});
+                return;
+            }
+
+            if (attempts < 20) {
+                window.setTimeout(() => typesetMath(attempts + 1), 100);
+            }
+        }
+
+        function resolveMarkdownUrl(note) {
+            if (window.location.protocol === 'file:') {
+                return new URL(`../${note.src}`, window.location.href);
+            }
+
+            return new URL(`/${note.src}`, window.location.origin);
+        }
+
+        async function renderNote() {
+            if (!note) {
+                document.title = 'Note not found | Daiwei Chen';
+                meta.textContent = 'Missing note';
+                title.textContent = 'Note not found';
+                summary.textContent = 'The requested note does not exist in the Useful Notes registry.';
+                content.innerHTML = '<p>Return to the notes index and choose an available note.</p>';
+                return;
+            }
+
+            document.title = `${note.title} | Daiwei Chen`;
+            meta.textContent = [note.date, note.tag].filter(Boolean).join(' \u00b7 ');
+            title.textContent = note.title;
+            summary.textContent = note.summary;
+
+            try {
+                const markdownUrl = resolveMarkdownUrl(note);
+                const response = await fetch(markdownUrl);
+                if (!response.ok) {
+                    throw new Error(`Unable to load ${markdownUrl.href}`);
+                }
+
+                const markdown = await response.text();
+                content.innerHTML = markdownToHtml(markdown, note.title);
+                typesetMath();
+            } catch (error) {
+                const markdownUrl = resolveMarkdownUrl(note);
+
+                if (window.location.protocol === 'file:') {
+                    content.innerHTML = `
+                        <p>Most browsers block loading markdown with <code>fetch()</code> from a direct <code>file:///</code> URL.</p>
+                        <p>Open this site through GitHub Pages or a local static server to render the note, or open the source markdown directly: <a href="${markdownUrl.href}">${note.src}</a>.</p>
+                    `;
+                    return;
+                }
+
+                content.innerHTML = `
+                    <p>This note could not be loaded from <code>${escapeHtml(markdownUrl.pathname)}</code>.</p>
+                    <p>Check that the markdown file exists under <code>assets/md_src</code> and that the path in <code>assets/md_src/notes.js</code> is correct.</p>
+                `;
+            }
+        }
+
+        renderNote();
+    </script>
+</body>
+</html>

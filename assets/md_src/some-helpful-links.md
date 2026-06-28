@@ -1,0 +1,1 @@
+- [how to be good at research (by @itsreallyvivek)](https://x.com/itsreallyvivek/status/2064686372737454155)
