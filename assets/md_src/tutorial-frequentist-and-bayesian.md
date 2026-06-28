@@ -1,12 +1,3 @@
----
-type: permanent-note
-created: 2026-06-05
-updated: 2026-06-20
-derived_from: []
-tags:
-  - permanent/principles
----
-
 # Frequentist & Bayesian Uncertainty
 
 ## Problem Setup: quantify uncertainty about an unknown parameter
@@ -86,6 +77,5 @@ The probability is over the posterior distribution of $\theta$, conditional on t
 > [!IMPORTANT]
 > The fundamental meaning of the statement is:
 > > Given a fixed $x_{1:n}$, the posterior mass assigned to $B(X_{1:n})$ is $1-\alpha$.
-
 
 

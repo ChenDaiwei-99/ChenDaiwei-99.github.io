@@ -51,12 +51,15 @@ a lowercase, hyphenated filename, then add one entry to
 `assets/md_src/my-note.md`.
 
 Keep note titles and summaries in `notes.js`; the markdown file should contain
-the note body. The renderer in `Good_Notes/note.html` already strips YAML
-frontmatter and duplicate top-level `# Title` headings. Preserve Obsidian
-callouts like `> [!NOTE]` and `> [!IMPORTANT]`, markdown tables, ordered lists,
-and LaTeX math using `$...$` or `$$...$$`; the page renders these through its
-local parser plus MathJax. Do not convert these structures manually to HTML
-unless the renderer cannot support a required construct.
+the note body. Remove YAML frontmatter from published markdown sources because
+GitHub Pages may process frontmatter files as Jekyll pages instead of serving
+the `.md` file used by `fetch()`. The renderer in `Good_Notes/note.html` still
+strips frontmatter as a local fallback and removes duplicate top-level `# Title`
+headings. Preserve Obsidian callouts like `> [!NOTE]` and `> [!IMPORTANT]`,
+markdown tables, ordered lists, and LaTeX math using `$...$` or `$$...$$`; the
+page renders these through its local parser plus MathJax. Do not convert these
+structures manually to HTML unless the renderer cannot support a required
+construct.
 
 ## Testing Guidelines
 
