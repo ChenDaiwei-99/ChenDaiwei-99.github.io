@@ -1,5 +1,13 @@
 window.USEFUL_NOTES = [
     {
+        slug: 'sft-vs-on-policy-learning',
+        title: 'SFT vs. On-Policy Learning',
+        summary: 'Why target-sampled SFT tends toward mode coverage, while student-sampled on-policy learning can specialize—and why limited capacity changes which behavior is useful.',
+        date: '07/19/2026',
+        tag: 'Machine Learning',
+        src: 'assets/md_src/sft-vs-on-policy-learning.md'
+    },
+    {
         slug: 'some-helpful-links',
         title: 'Some Helpful links',
         summary: 'A running collection of links, references, and resources worth keeping close.',
