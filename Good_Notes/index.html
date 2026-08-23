@@ -101,6 +101,29 @@
             font-size: 0.9rem;
         }
 
+        .helpful-links {
+            margin: 0.15rem 0 0;
+            padding-left: 1.2rem;
+        }
+
+        .helpful-links li {
+            margin-bottom: 0.45rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .helpful-links li:last-child {
+            margin-bottom: 0;
+        }
+
+        .helpful-links a {
+            color: var(--ink);
+        }
+
+        .helpful-links a:hover {
+            color: var(--accent);
+        }
+
         a {
             color: var(--ink);
             text-decoration: none;
@@ -168,12 +191,75 @@
 
     <script src="../assets/md_src/notes.js"></script>
     <script>
-        const notes = window.USEFUL_NOTES || [];
+        const notes = [...(window.USEFUL_NOTES || [])].sort((a, b) =>
+            Number(Boolean(b.pinned)) - Number(Boolean(a.pinned))
+        );
         const notesContainer = document.getElementById('notes');
 
         function getNoteHref(slug) {
             const encodedSlug = encodeURIComponent(slug);
             return `note.html#${encodedSlug}`;
+        }
+
+        function resolveMarkdownUrl(note) {
+            if (window.location.protocol === 'file:') {
+                return new URL(`../${note.src}`, window.location.href);
+            }
+
+            return new URL(`/${note.src}`, window.location.origin);
+        }
+
+        function appendFormattedText(element, value) {
+            value.split('**').forEach((part, index) => {
+                if (!part) {
+                    return;
+                }
+
+                if (index % 2 === 1) {
+                    const strong = document.createElement('strong');
+                    strong.textContent = part;
+                    element.appendChild(strong);
+                    return;
+                }
+
+                element.appendChild(document.createTextNode(part));
+            });
+        }
+
+        async function renderHelpfulLinks(note, container) {
+            try {
+                const response = await fetch(resolveMarkdownUrl(note));
+                if (!response.ok) {
+                    throw new Error('Unable to load helpful links.');
+                }
+
+                const markdown = await response.text();
+                const list = document.createElement('ul');
+                list.className = 'helpful-links';
+
+                markdown.replace(/\r\n/g, '\n').split('\n').forEach(line => {
+                    const link = line.match(/^[-*]\s+\[([^\]]+)\]\((https?:\/\/[^)]+)\)\s*$/);
+                    if (!link) {
+                        return;
+                    }
+
+                    const item = document.createElement('li');
+                    const anchor = document.createElement('a');
+                    anchor.href = link[2];
+                    anchor.target = '_blank';
+                    anchor.rel = 'external nofollow noopener';
+                    appendFormattedText(anchor, link[1]);
+                    item.appendChild(anchor);
+                    list.appendChild(item);
+                });
+
+                container.replaceChildren(list);
+            } catch (error) {
+                const fallback = document.createElement('a');
+                fallback.href = getNoteHref(note.slug);
+                fallback.textContent = 'Read links';
+                container.replaceChildren(fallback);
+            }
         }
 
         if (notes.length === 0) {
@@ -189,7 +275,7 @@
             const readLink = document.createElement('a');
 
             meta.className = 'post-meta';
-            meta.textContent = `${note.date} \u00b7 ${note.tag}`;
+            meta.textContent = [note.date, note.tag].filter(Boolean).join(' \u00b7 ');
             heading.textContent = note.title;
             summary.className = 'post-summary';
             summary.textContent = note.summary;
@@ -197,8 +283,22 @@
             readLink.href = getNoteHref(note.slug);
             readLink.textContent = 'Read note';
 
-            readMore.appendChild(readLink);
-            article.append(meta, heading, summary, readMore);
+            if (!note.hideMeta) {
+                article.appendChild(meta);
+            }
+
+            article.append(heading, summary);
+
+            if (note.showOnIndex) {
+                const linksContainer = document.createElement('div');
+                linksContainer.className = 'inline-note-content';
+                article.appendChild(linksContainer);
+                renderHelpfulLinks(note, linksContainer);
+            } else {
+                readMore.appendChild(readLink);
+                article.appendChild(readMore);
+            }
+
             notesContainer.appendChild(article);
         });
     </script>

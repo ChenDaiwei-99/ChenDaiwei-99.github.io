@@ -9,10 +9,12 @@ window.USEFUL_NOTES = [
     },
     {
         slug: 'some-helpful-links',
-        title: 'Some Helpful links',
+        title: 'Some Helpful Links',
         summary: 'A running collection of links, references, and resources worth keeping close.',
-        date: '06/27/2026',
         tag: 'Links',
+        pinned: true,
+        hideMeta: true,
+        showOnIndex: true,
         src: 'assets/md_src/some-helpful-links.md'
     },
     {
