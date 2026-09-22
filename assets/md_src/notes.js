@@ -1,5 +1,13 @@
 window.USEFUL_NOTES = [
     {
+        slug: 'feature-importance-linear-probing',
+        title: 'Feature Importance: What Does “Important” Mean?',
+        summary: 'From model weights to feature removal and shared information: a closer look at what different measures of importance actually tell us.',
+        date: '09/21/2026',
+        tag: 'Machine Learning',
+        src: 'assets/md_src/feature-importance-linear-probing.md'
+    },
+    {
         slug: 'sft-vs-on-policy-learning',
         title: 'SFT vs. On-Policy Learning',
         summary: 'Why target-sampled SFT tends toward mode coverage, while student-sampled on-policy learning can specialize—and why limited capacity changes which behavior is useful.',
